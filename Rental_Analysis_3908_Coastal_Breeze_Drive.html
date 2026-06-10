@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rental Market Analysis — 3908 Coastal Breeze Drive | Verandah Properties</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@500;600;700&family=Jost:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#008C82;
+    --teal-deep:#06605A;
+    --gold:#D4AF50;
+    --gold-soft:#E7D2A0;
+    --charcoal:#1A1A1A;
+    --ink:#2A2A2A;
+    --paper:#FBFAF6;
+    --paper-2:#F3F0E7;
+    --line:#E2DDCF;
+    --muted:#6E6A60;
+    --pos:#2F7D5B;
+    --warn:#B07A2E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'DM Sans',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.62;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+
+  /* ---- Masthead ---- */
+  .masthead{
+    background:
+      radial-gradient(120% 130% at 85% -10%, rgba(212,175,80,.18), transparent 55%),
+      linear-gradient(135deg, var(--charcoal) 0%, #11302E 60%, var(--teal-deep) 130%);
+    color:#fff;
+    padding:62px 0 54px;
+    position:relative;
+    overflow:hidden;
+  }
+  .masthead::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
+    background:linear-gradient(90deg,var(--teal) 0%,var(--gold) 55%,var(--gold-soft) 100%);
+  }
+  .brandline{
+    font-family:'Jost',sans-serif;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    font-size:11px;
+    font-weight:400;
+    color:var(--gold-soft);
+    margin-bottom:26px;
+  }
+  .eyebrow{
+    font-family:'Jost',sans-serif;
+    letter-spacing:.30em;
+    text-transform:uppercase;
+    font-size:11.5px;
+    color:var(--gold);
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:clamp(34px,5vw,52px);
+    line-height:1.06;
+    letter-spacing:.005em;
+  }
+  .sub-addr{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+    font-weight:500;
+    color:#E8E5DC;
+    margin-top:10px;
+    font-style:italic;
+  }
+  .tagline{
+    margin-top:30px;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:20px;
+    color:var(--gold-soft);
+    border-left:2px solid var(--gold);
+    padding-left:16px;
+  }
+
+  /* ---- Section scaffolding ---- */
+  section{padding:50px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px;}
+  .sec-num{
+    font-family:'Jost',sans-serif;
+    font-weight:500;
+    font-size:13px;
+    color:var(--teal);
+    letter-spacing:.18em;
+    border:1px solid var(--teal);
+    border-radius:2px;
+    padding:3px 9px;
+    white-space:nowrap;
+  }
+  h2{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:clamp(24px,3.4vw,32px);
+    color:var(--charcoal);
+    line-height:1.12;
+  }
+  h3{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:23px;
+    color:var(--teal-deep);
+    margin:24px 0 8px;
+  }
+  p{margin-bottom:14px;}
+  p.lead{font-size:18px;color:var(--ink);}
+  strong{font-weight:600;color:var(--charcoal);}
+
+  /* ---- Snapshot grid ---- */
+  .snapshot{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    margin-top:8px;
+  }
+  .snap-cell{background:var(--paper);padding:18px 18px;}
+  .snap-cell .k{
+    font-family:'Jost',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.13em;
+    font-size:10.5px;
+    color:var(--muted);
+    margin-bottom:5px;
+  }
+  .snap-cell .v{
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    font-weight:600;
+    color:var(--charcoal);
+    line-height:1.05;
+  }
+  .snap-cell .v small{font-size:14px;color:var(--muted);font-family:'DM Sans',sans-serif;}
+
+  .feat-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px;}
+  .chip{
+    font-family:'Jost',sans-serif;
+    font-size:12.5px;
+    letter-spacing:.02em;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:7px 15px;
+    color:var(--ink);
+  }
+  .chip b{color:var(--teal-deep);font-weight:500;}
+
+  /* ---- Amenity columns ---- */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:10px;}
+  .amen-list{list-style:none;margin-top:6px;}
+  .amen-list li{
+    position:relative;padding-left:22px;margin-bottom:9px;font-size:15px;
+  }
+  .amen-list li::before{
+    content:"";position:absolute;left:0;top:9px;width:8px;height:8px;
+    background:var(--gold);transform:rotate(45deg);
+  }
+
+  /* ---- Comp table ---- */
+  .table-scroll{overflow-x:auto;margin-top:6px;border-radius:6px;border:1px solid var(--line);}
+  table{width:100%;border-collapse:collapse;min-width:720px;background:#fff;}
+  thead th{
+    background:var(--charcoal);
+    color:#fff;
+    font-family:'Jost',sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-size:11px;
+    text-align:left;
+    padding:13px 14px;
+  }
+  tbody td{padding:13px 14px;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr.subject{background:linear-gradient(90deg,rgba(0,140,130,.09),rgba(212,175,80,.06));}
+  tbody tr.subject td{font-weight:500;}
+  .addr-cell b{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--charcoal);display:block;line-height:1.15;}
+  .addr-cell span{font-size:11.5px;color:var(--muted);font-family:'Jost',sans-serif;letter-spacing:.04em;}
+  .pill{
+    display:inline-block;font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.06em;
+    text-transform:uppercase;padding:3px 8px;border-radius:3px;
+  }
+  .pill.lsd{background:rgba(47,125,91,.12);color:var(--pos);}
+  .pill.act{background:rgba(176,122,46,.14);color:var(--warn);}
+  .pill.subj{background:var(--teal);color:#fff;}
+  .rent-num{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;color:var(--charcoal);}
+  .tnote{font-size:13px;color:var(--muted);margin-top:14px;font-style:italic;}
+
+  /* ---- Callout / note blocks ---- */
+  .note{
+    background:var(--paper-2);
+    border-left:3px solid var(--gold);
+    border-radius:0 6px 6px 0;
+    padding:20px 24px;
+    margin:24px 0;
+  }
+  .note .nh{
+    font-family:'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;
+    font-size:11px;color:var(--teal-deep);margin-bottom:7px;
+  }
+  .note p:last-child{margin-bottom:0;}
+
+  /* ---- Pricing tiers ---- */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0 8px;}
+  .tier{
+    background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px 22px;position:relative;
+    display:flex;flex-direction:column;
+  }
+  .tier.reco{
+    border:1.5px solid var(--teal);
+    box-shadow:0 14px 34px -20px rgba(0,140,130,.55);
+  }
+  .tier .badge{
+    position:absolute;top:-11px;left:22px;
+    font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    background:var(--teal);color:#fff;padding:4px 11px;border-radius:3px;
+  }
+  .tier .label{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--muted);margin-bottom:10px;}
+  .tier .price{font-family:'Playfair Display',serif;font-weight:600;font-size:38px;color:var(--charcoal);line-height:1;}
+  .tier .price small{font-size:15px;color:var(--muted);font-weight:400;font-family:'DM Sans',sans-serif;}
+  .tier .days{margin-top:8px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--teal-deep);}
+  .tier .desc{font-size:13.5px;color:var(--ink);margin-top:14px;}
+
+  .headline-rec{
+    margin-top:30px;
+    background:linear-gradient(135deg,var(--teal-deep),var(--teal));
+    color:#fff;border-radius:10px;padding:32px 34px;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .headline-rec .hr-left .k{font-family:'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--gold-soft);}
+  .headline-rec .hr-left .big{font-family:'Playfair Display',serif;font-size:52px;font-weight:700;line-height:1;margin-top:4px;}
+  .headline-rec .hr-left .big small{font-size:18px;font-weight:400;color:#DCEEEB;}
+  .headline-rec .hr-right{max-width:430px;font-size:14.5px;color:#EAF6F4;}
+  .headline-rec .hr-right strong{color:#fff;}
+
+  /* ---- Strategy steps ---- */
+  .steps{counter-reset:step;margin-top:8px;}
+  .step{display:flex;gap:18px;padding:16px 0;border-bottom:1px dashed var(--line);}
+  .step:last-child{border-bottom:none;}
+  .step .n{
+    counter-increment:step;
+    flex:0 0 auto;width:36px;height:36px;border-radius:50%;
+    background:var(--charcoal);color:var(--gold);
+    font-family:'Playfair Display',serif;font-weight:600;font-size:17px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step .n::before{content:counter(step);}
+  .step .st-body h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--charcoal);margin-bottom:2px;}
+  .step .st-body p{font-size:14.5px;margin-bottom:0;}
+
+  /* ---- Vacancy math ---- */
+  .math{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
+  .math .box{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px;}
+  .math .box.bad{border-top:3px solid #C0563D;}
+  .math .box.good{border-top:3px solid var(--pos);}
+  .math .box .t{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--muted);margin-bottom:10px;}
+  .math .box .row{display:flex;justify-content:space-between;font-size:14px;padding:5px 0;border-bottom:1px dashed var(--line);}
+  .math .box .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);}
+
+  /* ---- Footer ---- */
+  footer{background:var(--charcoal);color:#CFCBC0;padding:46px 0 38px;}
+  footer .f-brand{font-family:'Playfair Display',serif;color:#fff;font-size:24px;font-weight:600;}
+  footer .f-brand span{color:var(--gold);}
+  footer .f-tag{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-soft);font-size:18px;margin-top:4px;}
+  footer .f-meta{margin-top:22px;font-size:13px;color:#9C9789;line-height:1.7;}
+  footer .f-prep{margin-top:18px;font-size:14px;color:#E4E0D6;}
+  footer .f-prep b{color:#fff;font-weight:600;}
+  .disclaimer{font-size:11.5px;color:#807B70;margin-top:24px;border-top:1px solid #333;padding-top:18px;line-height:1.6;}
+
+  a{color:var(--teal);}
+
+  @media (max-width:760px){
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .two-col,.tiers,.math{grid-template-columns:1fr;}
+    .headline-rec{flex-direction:column;align-items:flex-start;}
+  }
+  @media print{
+    body{background:#fff;font-size:12px;}
+    .masthead{padding:40px 0 34px;}
+    section{padding:30px 0;}
+    .tier.reco{box-shadow:none;}
+    .headline-rec,.tier,.note,.math .box{break-inside:avoid;}
+    a{color:var(--ink);text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="brandline">Verandah Properties&nbsp;&nbsp;·&nbsp;&nbsp;Curating Lake Nona's Finest Rental Portfolio</div>
+    <div class="eyebrow">Rental Market Analysis &amp; Pricing Strategy</div>
+    <h1>3908 Coastal Breeze Drive</h1>
+    <div class="sub-addr">Kissimmee, Florida 34744 &nbsp;·&nbsp; North Shore at the Landing</div>
+    <div class="tagline">An opinion of rental value engineered for one outcome:<br>a qualified tenant secured in 21 days or fewer.</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ 01 SUBJECT ============ -->
+  <section id="subject">
+    <div class="sec-head">
+      <span class="sec-num">01 · The Investment</span>
+    </div>
+    <h2>A premium single-story investment property in an established gated community</h2>
+    <p class="lead">This is the most fully-featured four-bedroom investment property in its competitive set: larger, better-appointed, and positioned on a pond-view lot inside an established, gated Boggy Creek community. Those advantages are real — and the strategy below is built to convert them into a fast, clean lease rather than a long chase for the last hundred dollars.</p>
+
+    <div class="snapshot">
+      <div class="snap-cell"><div class="k">Bedrooms</div><div class="v">4</div></div>
+      <div class="snap-cell"><div class="k">Full Baths</div><div class="v">3</div></div>
+      <div class="snap-cell"><div class="k">Garage</div><div class="v">3 <small>car</small></div></div>
+      <div class="snap-cell"><div class="k">Living Area</div><div class="v">2,519 <small>sq ft</small></div></div>
+      <div class="snap-cell"><div class="k">Year Built</div><div class="v">2011</div></div>
+      <div class="snap-cell"><div class="k">Stories</div><div class="v">One</div></div>
+      <div class="snap-cell"><div class="k">Lot</div><div class="v">0.19 <small>ac</small></div></div>
+      <div class="snap-cell"><div class="k">HOA</div><div class="v">$169 <small>/mo</small></div></div>
+    </div>
+
+    <div class="feat-row">
+      <span class="chip"><b>Water / pond view</b></span>
+      <span class="chip"><b>Screened, covered lanai</b></span>
+      <span class="chip"><b>Pavered driveway</b></span>
+      <span class="chip">Split floor plan</span>
+      <span class="chip">High ceilings · open plan</span>
+      <span class="chip">Dual primary closets · soaking tub</span>
+      <span class="chip">Inside laundry</span>
+      <span class="chip">Tile roof</span>
+      <span class="chip">Pets considered (community allows)</span>
+    </div>
+
+    <div class="note">
+      <div class="nh">Why these three features carry the pricing</div>
+      <p>The <strong>water view</strong>, <strong>screened lanai</strong>, and <strong>three-car garage</strong> are the differentiators that separate this property from every leased comparable below. They are also the features that drive showings online — the water view in particular is the single most clickable photo we can lead with, and showings are what produce a 21-day lease.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 NEIGHBORHOOD ============ -->
+  <section id="neighborhood">
+    <div class="sec-head">
+      <span class="sec-num">02 · The Location</span>
+    </div>
+    <h2>North Shore at the Landing — an established gated community minutes from Medical City</h2>
+    <p>North Shore Village (marketed as <strong>The Landings at North Shore</strong>) is an established gated enclave off Boggy Creek Road, just west of Narcoossee Road in the Boggy Creek corridor of southeast Orlando / Osceola County. The community was built between 2006 and 2011 by Centerline Homes and D.R. Horton, giving it mature landscaping and a settled, residential feel that newer subdivisions cannot replicate.</p>
+    <p>The community sits directly in the <strong>Lake Nona / Medical City growth corridor</strong> — a meaningful draw for the relocation, physician, and corporate renter profiles that anchor this market. Its gated entry, mature streetscape, and pond-and-fountain water features give it a settled, residential character that the newer subdivisions nearby cannot replicate, and the subject's lot sits on the water for the best of that setting.</p>
+
+    <div class="two-col">
+      <div>
+        <h3>Inside the gates</h3>
+        <ul class="amen-list">
+          <li>Gated entry &amp; well-lit streets</li>
+          <li>Community pool &amp; playground</li>
+          <li>Sidewalks throughout; golf-cart friendly</li>
+          <li>Pond &amp; fountain water features framing the subject lot</li>
+          <li>HOA $169/mo (Access Difference) — grounds maintained</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Minutes away</h3>
+        <ul class="amen-list">
+          <li>Lake Nona Medical City &amp; VA Hospital</li>
+          <li>Orlando International Airport (MCO)</li>
+          <li>USTA National Campus</li>
+          <li>Lake Nona Town Center &amp; area dining</li>
+          <li>SR-417, SR-528 &amp; Florida's Turnpike</li>
+          <li>Boggy Creek-corridor shopping &amp; dining</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <div class="nh">A note on the comparables' community</div>
+      <p>The leased comparables below sit in <strong>North Point</strong>, a newer gated community a short distance east on Boggy Creek (Lennar / Mattamy builds, clubhouse + pool + tot lot, adjacent to Austin Tindall Park). It is a credible, same-corridor cross-community comp set — both are gated communities of similar profile. The subject's edge is at the property level: more square footage, a third full bath, the three-car garage, and the pond-view lot. That is the basis for leading the four-bedroom field rather than following it.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 COMPARABLES ============ -->
+  <section id="comps">
+    <div class="sec-head">
+      <span class="sec-num">03 · The Comparables</span>
+    </div>
+    <h2>What the market actually paid — and how fast</h2>
+    <p>Four data points define this market. Read together, they tell a precise story about the relationship between price and speed in this size class.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Bed / Bath</th>
+            <th>Sq Ft · Yr</th>
+            <th>Defining features</th>
+            <th>Status</th>
+            <th>Rent</th>
+            <th>Days on mkt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="subject">
+            <td class="addr-cell"><b>3908 Coastal Breeze Dr</b><span>North Shore at the Landing</span></td>
+            <td>4 / 3.0</td>
+            <td>2,519 · 2011</td>
+            <td>Water view · screened lanai · 3-car · pavered drive · gated community</td>
+            <td><span class="pill subj">Subject</span></td>
+            <td class="rent-num">—</td>
+            <td>Target: ≤21</td>
+          </tr>
+          <tr>
+            <td class="addr-cell"><b>4475 Biscayne Breeze Way</b><span>North Point</span></td>
+            <td>4 / 2.5</td>
+            <td>2,251 · 2013</td>
+            <td>Water view · screened lanai · smaller · half-bath short of subject</td>
+            <td><span class="pill act">Active · unleased</span></td>
+            <td class="rent-num">$3,100</td>
+            <td><strong style="color:var(--warn)">54+</strong></td>
+          </tr>
+          <tr>
+            <td class="addr-cell"><b>4466 Indigo Sky Ln</b><span>North Point</span></td>
+            <td>4 / 3.0</td>
+            <td>2,270 · 2015</td>
+            <td>No water view · screened lanai · large fenced yard</td>
+            <td><span class="pill lsd">Leased 06/01/26</span></td>
+            <td class="rent-num">$3,000</td>
+            <td>36</td>
+          </tr>
+          <tr>
+            <td class="addr-cell"><b>4454 Indigo Sky Ln</b><span>North Point</span></td>
+            <td>5 / 3.0</td>
+            <td>2,270 · 2014</td>
+            <td>5th bedroom · no water view · no screened lanai · fully fenced yard</td>
+            <td><span class="pill lsd">Leased 04/28/26</span></td>
+            <td class="rent-num">$3,300</td>
+            <td>13&nbsp;<span style="color:var(--muted);font-size:12px;">(re-lease)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tnote">Source: CoreLogic / Stellar MLS rental market summary, pulled 6/10/2026. Subject specifications per prior MLS listing O6301138 and owner-provided detail.</p>
+
+    <div class="note">
+      <div class="nh">Reading 4454 Indigo Sky — the "two leases" explained</div>
+      <p>4454 Indigo Sky shows two recorded leases three weeks apart (04/08 then 04/28), both at $3,300 / 100% of ask. The close dates make the pattern clear: the <strong>first lease almost certainly broke before move-in</strong>, and the property re-leased almost immediately. This is not two separate market validations — it is <strong>one five-bedroom property that proved durable $3,300 demand and re-let in under two weeks</strong> when the first applicant fell through. We treat it as a single, strong data point at the five-bedroom tier.</p>
+    </div>
+
+    <h3>How the subject adjusts against each comp</h3>
+    <p><strong>vs. 4466 Indigo Sky ($3,000, leased in 36 days):</strong> The subject wins on size (+250 sq ft), water view, three-car garage, and the pond-view lot. It clearly outranks this property — which supports a premium over $3,000. But note it took <strong>36 days to lease even at $3,000</strong>, our first signal that the four-bedroom buyer here is price-sensitive on speed.</p>
+    <p><strong>vs. 4475 Biscayne Breeze ($3,100, still sitting at 54+ days):</strong> This is the closest feature match — it also has a water view and screened lanai — and the subject still beats it on square footage, a full third bathroom, and the three-car garage. <strong>This is the most important number on the page:</strong> a four-bedroom with the same headline features as ours has been unable to lease at $3,100 in nearly eight weeks. The four-bedroom market has <em>not</em> validated $3,100 for speed.</p>
+    <p><strong>vs. 4454 Indigo Sky ($3,300, leased fast):</strong> On a pure feature grid the subject nearly matches it — losing the fifth bedroom but gaining the water view, screened lanai, 250 sq ft, and three-car garage. The lesson here isn't "price at $3,300" — it's that <strong>renters shop by bedroom count first.</strong> A family searching "5 bed" never sees our four-bedroom, and a family searching "4 bed" compares us to the $3,000–$3,100 field, not to this listing.</p>
+  </section>
+
+  <!-- ============ 04 PRICING ============ -->
+  <section id="pricing">
+    <div class="sec-head">
+      <span class="sec-num">04 · The Recommendation</span>
+    </div>
+    <h2>Pricing for speed without leaving money on the table</h2>
+    <p class="lead">The subject is the best four-bedroom in the set and earns the top of the four-bedroom range. The discipline is staying inside that range — because the one comp priced above it has been sitting for 54 days.</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="label">Speed Floor</div>
+        <div class="price">$3,150<small>/mo</small></div>
+        <div class="days">≤14 days · near-certain</div>
+        <div class="desc">Books showings immediately and underprices the lagging $3,100 comp on a clearly superior property. The fallback if early traffic is soft.</div>
+      </div>
+      <div class="tier reco">
+        <div class="badge">Recommended</div>
+        <div class="label">Launch Price</div>
+        <div class="price">$3,195<small>/mo</small></div>
+        <div class="days">≤21 days · high confidence</div>
+        <div class="desc">Tops the four-bedroom field on the strength of the water view, third bath, and three-car garage — while sitting just under the psychological $3,200 line. The right balance of premium and velocity.</div>
+      </div>
+      <div class="tier">
+        <div class="label">Stretch Ceiling</div>
+        <div class="price">$3,250<small>/mo</small></div>
+        <div class="days">30+ days · risk</div>
+        <div class="desc">Defensible on the feature grid, but pushes into the zone where 4475 stalled. Only worth testing if the owner accepts a longer vacancy in exchange for upside.</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <div class="nh">The line we do not cross</div>
+      <p><strong>$3,300 is five-bedroom territory.</strong> The only property that achieved it has a fifth bedroom and re-let fast because of it. A four-bedroom listed at $3,300 invites the exact 54-day outcome 4475 is living right now — and a long vacancy erases the premium many times over (see below).</p>
+    </div>
+
+    <div class="headline-rec">
+      <div class="hr-left">
+        <div class="k">Recommended launch rent</div>
+        <div class="big">$3,195<small> / month</small></div>
+      </div>
+      <div class="hr-right">
+        <strong>List at $3,195 with a day-10 checkpoint.</strong> If we do not have a qualified application in hand by day 10, reduce to $3,150 to protect the 21-day target. This keeps us at the top of the four-bedroom market while guaranteeing we never drift into the stall zone.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 SPEED STRATEGY ============ -->
+  <section id="strategy">
+    <div class="sec-head">
+      <span class="sec-num">05 · The 21-Day Plan</span>
+    </div>
+    <h2>How we convert a premium property into a fast, qualified lease</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n"></div>
+        <div class="st-body">
+          <h4>Lead with the water</h4>
+          <p>The hero photo is the pond view from the screened lanai. It is our single biggest click-and-showing driver and the one feature the leased $3,000 comp could not offer.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n"></div>
+        <div class="st-body">
+          <h4>Price sharp from day one</h4>
+          <p>Launch at $3,195 — not $3,250 "to test." The first 10 days carry the most search visibility and the freshest traffic; a sharp launch captures it before the listing ages.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n"></div>
+        <div class="st-body">
+          <h4>Frame the lifestyle, qualify hard</h4>
+          <p>Market the gated community, pond-view lanai, and Medical City proximity to the relocation / corporate renter, then run full screening so a fast lease is also a clean one. Speed and tenant quality are not a trade-off when we price correctly.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n"></div>
+        <div class="st-body">
+          <h4>Day-10 checkpoint</h4>
+          <p>No qualified application by day 10 → reduce to $3,150. This single pre-agreed move is what keeps us off 4475's 54-day path.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 VACANCY MATH ============ -->
+  <section id="math">
+    <div class="sec-head">
+      <span class="sec-num">06 · The Math of Waiting</span>
+    </div>
+    <h2>Why speed is the conservative choice</h2>
+    <p>Chasing the top of the range feels like protecting the owner's return. The arithmetic says the opposite: at this rent level, a single extra vacant month costs more than a full year of the premium an aggressive price might capture.</p>
+
+    <div class="math">
+      <div class="box bad">
+        <div class="t">Hold out for $3,300 &amp; sit one extra month</div>
+        <div class="row"><span>Monthly premium vs. $3,195</span><span>+$105</span></div>
+        <div class="row"><span>Annual value of that premium</span><span>+$1,260</span></div>
+        <div class="row"><span>One extra vacant month</span><span>−$3,300</span></div>
+        <div class="row"><span>Net Year-1 position</span><span style="color:#C0563D">−$2,040</span></div>
+      </div>
+      <div class="box good">
+        <div class="t">List $3,195 &amp; lease inside 21 days</div>
+        <div class="row"><span>Rent secured</span><span>$3,195</span></div>
+        <div class="row"><span>Extra vacant months</span><span>0</span></div>
+        <div class="row"><span>Time to "recover" one vacant month at +$105</span><span>~31 mo</span></div>
+        <div class="row"><span>Net Year-1 position</span><span style="color:var(--pos)">Full income, no carry</span></div>
+      </div>
+    </div>
+    <p class="tnote">It would take roughly two and a half years of the $105 premium to recover a single month of vacancy. The disciplined launch price is the conservative one.</p>
+  </section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-brand">Verandah <span>Properties</span></div>
+    <div class="f-tag">The marriage, not the sprint.</div>
+    <div class="f-prep">Prepared exclusively for the Owner of <b>3908 Coastal Breeze Drive, Kissimmee, FL 34744</b><br>
+      by <b>Pamela Syvertson</b> · Owner &amp; Broker, Verandah Properties, LLC</div>
+    <div class="f-meta">
+      White-glove property management for the Lake Nona &amp; Orlando corridor &nbsp;·&nbsp; June 10, 2026
+    </div>
+    <div class="disclaimer">
+      This is an opinion of rental value and a Comparative Market Analysis. It is not an appraisal and was not prepared under the Uniform Standards of Professional Appraisal Practice. Comparable data is drawn from CoreLogic / Stellar MLS and is deemed reliable but not guaranteed. Final rental pricing remains at the owner's discretion; actual lease-up time will vary with seasonality, property condition at market, photography, and showing availability. Comparable and subject square footage, features, and HOA figures should be independently verified.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
